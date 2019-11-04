@@ -40,7 +40,7 @@ export class UpdateVendorComponent implements OnInit {
       vaddress: ['', Validators.required ],
       vlocation: ['', Validators.required ],
       vservice: ['', Validators.required ],
-      pincode: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(6),Validators.pattern('[0-9]+')]],
+      pincode: ['', [Validators.required,Validators.compose([Validators.minLength(3),Validators.maxLength(6)]),Validators.pattern('[0-9]+')]],
       cname:['',Validators.required],
       department :['',Validators.required],
       email:['',Validators.required,Validators.email],

@@ -123,29 +123,27 @@
     </div>
 </div>
 
-<!-- contact person EmailId-->
-<div class="form-group">
-    <label for="name">Email Id</label>
-    <input type="textArea" class="form-control" required formControlName="email" #email  [(ngModel)]="vendor.email">
-</div>
-<div *ngIf="editVendorForm.controls['email'].invalid && (editVendorForm.controls['email'].dirty || editVendorForm.controls['email'].touched)"
-    class="alert alert-danger">
-    <div *ngIf="editVendorForm.controls['email'].errors.required">
-        Email id is required.
-    </div>
-</div>
-
-
-
 <!-- contact person PhoneNo-->
 <div class="form-group">
     <label for="name">Phone number</label>
-    <input type="textArea" class="form-control" required formControlName="phone" #phone  [(ngModel)]="vendor.phone">
+    <input type="text" class="form-control" required formControlName="phone" #phone  [(ngModel)]="vendor.phone">
 </div>
 <div *ngIf="editVendorForm.controls['phone'].invalid && (editVendorForm.controls['phone'].dirty || editVendorForm.controls['phone'].touched)"
     class="alert alert-danger">
     <div *ngIf="editVendorForm.controls['phone'].errors.required">
         Phone number is required.
+    </div>
+</div>
+
+<!-- contact person EmailId-->
+<div class="form-group">
+    <label for="name">Email Id</label>
+    <input type="text" class="form-control" required formControlName="email" #email [(ngModel)]="vendor.email">
+</div>
+<div *ngIf="editVendorForm.controls['email'].invalid && (editVendorForm.controls['email'].dirty || editVendorForm.controls['email'].touched)"
+    class="alert alert-danger">
+    <div *ngIf="editVendorForm.controls['email'].errors.required">
+        Email id is required.
     </div>
 </div>
 
