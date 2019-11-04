@@ -1,0 +1,83 @@
+
+        <ul class="navbar-nav">
+           
+            <li>
+                <a [routerLink]="['/home']" class="btn btn-primary" style="text-align:center; margin-left: 15px">HOME</a>
+                
+                <a [routerLink]="['/home/createvendor']" class="btn btn-success" style="text-align:center; margin-left: 15px">Add Vendor</a></li>
+                </ul>
+              
+              
+              <div class="panel panel-primary">
+                <div class="panel-heading"><br>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--search-->
+                    <div class="container input-group md-form form-sm form-1 pl-0" style="width:350px;margin-right:20px">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text cyan lighten-2" id="basic-text1"><i class="fa fa-search"
+                                  aria-hidden="true"></i></span>
+                            </div>
+                            <input class="form-control my-0 py-1" type="text" placeholder="search by name/phone/service..."  [(ngModel)]="searchString" (ngModelChange)="search(searchString)"aria-label="Search">
+                          
+                          </div><br>
+        
+                    <h3>Vendor Contact Details</h3>
+        
+                   
+                </div><br>
+                
+                <div class="panel-body">
+                        <table class="table">
+                                <thead class="table-secondary">
+                            <tr>
+                               
+                                <th>Vendor ID </th>
+                                <th>Vendor Name</th>
+                                <th>Vendor Location</th>
+                                <th>Vendor Service</th>
+                                <th>Pincode</th>
+                                <th>Contact Name</th>
+                                <th>Department</th>  
+                                <th>Phone</th>
+                                <th>Email</th>   
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead> 
+                        <tbody>
+                            <tr *ngFor="let vendor of vendors | async|paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                                <td>{{vendor.vid}}</td>
+                                <td>{{vendor.vname}}</td>
+                                <td>{{vendor.vlocation}}</td>
+                                <td>{{vendor.vservice}}</td>
+                                <td>{{vendor.pincode}}</td>
+                                <td>{{vendor.cname}}</td>
+                                <td>{{vendor.department}}</td>
+                                <td>{{vendor.email}}</td>
+                                <td>{{vendor.phone}}</td>
+                                
+                                <td>
+                                
+                                     <a routerLink="home/updatevendor"(click) = "updateVendor(vendor.vid)"><img src="assets/edit.jpg" style="width:28px;"/></a>&nbsp;&nbsp;
+                                        
+                      <a mwlConfirmationPopover
+                      [popoverTitle]="popoverTitle"
+                      [popoverMessage]="popoverMessage"
+                      placement="left"
+                      (confirm)="deleteVendor(vendor.vid)"
+                      (cancel)="cancelClicked=true"> 
+                      <img src="assets/disable1.png" style="width:30px;"/>
+                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-left: 250px;">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                      </div>
+              </div>
+        
+              
+        
+              
