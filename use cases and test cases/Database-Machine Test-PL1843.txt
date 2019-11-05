@@ -1,0 +1,64 @@
+//VENDOR TABLE 
+
+Create table vendor(
+     vid number(20) primary key,
+     vname varchar2(40),
+     vaddress varchar2(10),
+     vlocation varchar2(40),
+     vservice varchar2(40) ,
+     pincode number(20),
+     isactive varchar2(3)
+ );
+
+
+ Create sequence vendorseq start with 100;
+
+
+ Create or replace  trigger vendortrg
+ Before insert on Vendor
+ For each row
+ Begin
+ Select VendorSeq.NEXTVAL
+ Into:new.vid
+ From dual;
+ End;
+ /
+
+//CONTACT TABLE
+
+
+ Create table Contact(
+     cid number(20) primary key,
+     cname varchar2(40),
+     department varchar2(30),
+     email varchar2(40),
+     phone varchar2(40),
+     vid number(20) references vendor(vid) on delete cascade);
+
+
+
+
+ Create sequence ContactSeq start with 100;
+
+
+Create or replace  trigger ContactTrg
+Before insert on Contact
+For each row
+Begin
+Select ContactSeq.NEXTVAL
+Into:new.cid
+From dual;
+End;
+/
+
+
+//insert
+
+insert into vendor(vname,vaddress,vlocation,vservice,pincode,isactive) values('LG','Trivandrum','Kerala','Food Su
+pplier',695017,'Y');
+
+1 row created.
+
+insert into contact(cname,department,email,phone,vid) values('Naufa','Food Corp','naufa@gmail.com',70254860,102);
+
+
